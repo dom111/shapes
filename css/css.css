@@ -1,0 +1,129 @@
+/* Global */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Colours */
+.red {
+  background: #f00;
+}
+
+.blue {
+  background: #00f;
+}
+
+.yellow {
+  background: #ff0;
+}
+
+.green {
+  background: #0f0;
+}
+
+.orange {
+  background: #f80;
+}
+
+.purple {
+  background: #80f;
+}
+
+.white {
+  background: #fff;
+}
+
+.black {
+  background: #000;
+}
+
+.grey {
+  background: #888;
+}
+
+.pink {
+  background: #f88;
+}
+
+.brown {
+  background: #840;
+}
+
+/* Messages */
+div#message {
+  position: absolute;
+  left: 50%;
+  top: 0px;
+  width: 500px;
+  border: 1px solid #aaa;
+  background: #eee;
+  margin: 0 0 0 -250px;
+  padding: 10px;
+  color: #666;
+}
+
+div#message.info {
+  background: #ccf;
+  border: 1px solid #88b;
+  color: #447;
+}
+
+div#message.success {
+  background: #cfc;
+  border: 1px solid #8b8;
+  color: #474;
+}
+
+div#message.warning {
+  background: #ffc;
+  border: 1px solid #bb8;
+  color: #774;
+}
+
+div#message.error {
+  background: #fcc;
+  border: 1px solid #b88;
+  color: #744;
+}
+
+/* Menu */
+div#menu {
+  cursor: default;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+}
+
+div#menu:hover {
+  z-index: 20;
+}
+
+/* Options */
+div#options {
+  cursor: default;
+}
+
+/* Game Area */
+div.game-area {
+  position: relative;
+  height: 100%;
+  cursor: url(/img/pointer-extra-large.gif) 40 8, auto;
+}
+
+div.game-area p.objective {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+  z-index: 2;
+  background: #ffc;
+  border: 1px solid #bb8;
+  color: #774;
+  padding: 10px;
+}
+
+div.game-area .shape {
+  position: absolute;
+}

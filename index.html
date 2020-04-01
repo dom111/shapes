@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+    <head>
+        <title>Shapes</title>
+        <link rel="stylesheet" href="css/css.css" type="text/css" media="screen" charset="utf-8"/>
+        <link rel="stylesheet" href="css/eggplant/jquery-ui-1.7.2.custom.css" type="text/css" media="screen" charset="utf-8"/>
+    </head>
+    <body>
+        <div id="menu">
+            <ul>
+                <li><a href="#" onclick="Shapes.init(); return false;">New game</a></li>
+                <li><a href="#" onclick="Shapes.changeOptions(); return false;">Options...</a></li>
+            </ul>
+        </div>
+        
+        <div id="options" title="Options">
+            <form>
+                <fieldset>
+                    <label for="event">What to do?</label>
+                    <select id="event" class="text ui-widget-content ui-corner-all">
+                        <option value="mousedown">Click</option>
+                        <option value="mouseover">Touch</option>
+                    </select>
+                    <br/>
+                    
+                    <label for="number">Number of shapes (<span id="number-value"></span>)</label>
+                    <div id="number"></div>
+                    <br/>
+                    
+                    <label for="times">Number of times (<span id="times-value"></span>)</label>
+                    <div id="times"></div>
+                    <br/>
+                    
+                    <label for="size">Shape Size (<span id="size-value"></span>)</label>
+                    <div id="size"></div>
+                    <br/>
+                    
+                    <label for="level">Difficulty Level (<span id="level-value"></span>)</label>
+                    <div id="level"></div>
+                    <br/>
+                    
+                    <label for="mode">Match</label>
+                    <select id="mode" class="text ui-widget-content ui-corner-all">
+                        <option value="0">Shape only</option>
+                        <option value="1">Colour only</option>
+                        <option value="2">Shape and Colour</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
+        <div id="audio"></div>
+        <script src="js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/jquery-ui-1.7.2.custom.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/speakClient.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/application.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/shapes.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            Shapes.init();
+            
+            $('#options').dialog({
+                autoOpen: false,
+                width: 500,
+
+                buttons: {
+                    Save: function() {
+                        Shapes.options.event = $('#event').val();
+                        Shapes.options.number = $('#number').slider('value');
+                        Shapes.options.level = $('#level').slider('value');
+                        Shapes.options.times = $('#times').slider('value');
+                        Shapes.options.size = $('#size').slider('value');
+                        Shapes.options.mode = $('#mode').val();
+                        $(this).dialog('close');
+                        Shapes.reload();
+                    },
+
+                    Reset: function() {
+                        $('#event').val('mouseover');
+                        $('#number').slider('value', 2);
+                        $('#level').slider('value', 3);
+                        $('#times').slider('value', 10);
+                        $('#size').slider('value', 200);
+                        $('#mode').slider('mode', 2);
+                    },
+
+                    Cancel: function() {
+                        $(this).dialog('close');
+                    }
+                }
+            });
+
+            $('#event').val(Shapes.options.event);
+
+            $('#number').slider({
+                'min': 2,
+                'max': 20,
+                'step': 1,
+                'value': Shapes.options.number,
+                change: function(event, ui) {
+                       $('#number-value').html($('#number').slider('value'));
+                }
+            });
+            $('#number-value').html(Shapes.options.number);
+
+            $('#times').slider({
+                'min': 10,
+                'max': 200,
+                'step': 5,
+                'value': Shapes.options.times,
+                change: function(event, ui) {
+                       $('#times-value').html($('#times').slider('value'));
+                }
+            });
+            $('#times-value').html(Shapes.options.times);
+
+            $('#size').slider({
+                'min': 50,
+                'max': 300,
+                'step': 50,
+                'value': Shapes.options.size,
+                change: function(event, ui) {
+                       $('#size-value').html($('#size').slider('value'));
+                }
+            });
+            $('#size-value').html(Shapes.options.size);
+
+            $('#level').slider({
+                'min': 2,
+                'max': 11,
+                'step': 1,
+                'value': Shapes.options.level,
+                change: function(event, ui) {
+                    $('#level-value').html($('#level').slider('value'));
+                }
+            });
+            $('#level-value').html(Shapes.options.level);
+
+            $('#mode').val(Shapes.options.mode);
+        </script>
+    </body>
+</html>
